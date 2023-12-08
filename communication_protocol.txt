@@ -1,0 +1,55 @@
+Communication protocol:
+
+Serial communication protocol: 9600 8N1. (Rate of 9600, data bits 8, parity none, stop bits 1)
+
+Serial report communication cycle: 1+0.5 seconds
+
+Data frame (10 bytes): message header + order+ data(6 bytes) + checksum + message trailer
+
+The number of bytes:Name:Content
+
+0:message header:AA
+
+order:C0
+
+data 1:PM2.5 low byte
+
+data 2:PM2.5 high byte
+
+data 3:PM10 low byte
+
+data 4:PM10 high byte
+
+data 5:0(reserved)
+
+data 6:0(reserved)
+
+checksum:checksum
+
+message trailer:AB
+
+Checksum: data 1 + data 2 + ...+ data 6
+
+PM2.5 data content: PM2.5 (ug/m3) = ((PM2.5 high byte*256 ) + PM2.5 low byte)/10
+
+PM10 data content: PM10 (ug/m3) = ((PM10 high byte*256 ) + PM10 low byte)/10
+
+Interface specification:
+
+CTL:Control pin, reserved
+
+1um:>0.3 Micron particle concentration, PWM Output
+
+5V:5V power input
+
+25um:>2.5 Micron particle concentration, PWM Output
+
+GND:GND
+
+R:Serial port receiver RX
+
+T:Serial port transmission TXPS: The pitch of Interface is 2.54mm
+
+Package included:
+
+1 x PM Sensor SDS011 High Precision PM2.5 Air Quality Detection Sensor Module
